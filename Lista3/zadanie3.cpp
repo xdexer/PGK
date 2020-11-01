@@ -105,7 +105,7 @@ public:
     void setBuffers() {
         bindBuffers();
         GLfloat vert[2][2]; // lines
-        printf("%f %f \n", this->x, this->y);
+        //printf("%f %f \n", this->x, this->y);
         vert[0][0] = -(this->x);
         vert[0][1] = -(this->y);
         vert[1][0] = this->x;
@@ -152,8 +152,9 @@ private:
 class Linetab{
 public:
     Linetab(unsigned int seed, unsigned int n): num(n){
-        plx = -0.9f;
-        ply = -0.9f;
+        step = 2.0f / (2*num); //needed to estimate center of the box where line will be put in
+        plx = -1.0f + step;
+        ply = -1.0f + step;
         tab = new MyLine*[num];
 
         angles.push_back(90);
@@ -200,8 +201,8 @@ public:
     }
 
     void drawLines(){ //przeskalować odstępy i wielkości linii
-        float lx = -0.9;
-        float ly = -0.9;
+        float lx = -1.0f + step;
+        float ly = -1.0f + step;
         for(int i = 0; i < num; i++){
             for(int j = 0; j < num; j++){
                 if(i != 0 || j != 0) {
@@ -210,18 +211,19 @@ public:
                 else{
                     tab[0][0].draw(plx,ply,num);
                 }
-                lx += 2.0f/num;
+                lx += 2*step; // we multiply step by 2 to determine the center of the next box
             }
-            lx = -0.9;
-            ly += 2.0f/num;
+            lx = -1.0f + step;
+            ly += 2*step;
         }
     }
 
 private:
     MyLine **tab;
     std::vector<int> angles;
+    //std::vector<std::pair<int,int>> positions;
     int num;
-    float plx, ply;
+    float plx, ply, step;
 };
 
 
@@ -306,7 +308,7 @@ int main(int argc, char *argv[]) {
        n = atoi(argv[2]);
    } else{
        seed = 2137;
-       n = 10;
+       n = 4;
    }
    win.MainLoop(seed,n);
    return 0;
