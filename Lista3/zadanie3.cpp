@@ -13,7 +13,6 @@
 #include <memory>
 #include "AGL3Window.hpp"
 #include "AGL3Drawable.hpp"
-
 // ==========================================================================
 // Drawable object: no-data only: vertex/fragment programs
 // ==========================================================================
@@ -72,10 +71,10 @@ public:
 // ==========================================================================
 class MyLine : public AGLDrawable {
 public:
-   MyLine() : AGLDrawable(0) {
-   }
-   void setShaders() {
-      compileShaders(R"END(
+    MyLine() : AGLDrawable(0) {
+    }
+    void setShaders() {
+        compileShaders(R"END(
 
          #version 330
          #extension GL_ARB_explicit_uniform_location : require
@@ -102,111 +101,127 @@ public:
          }
 
       )END");
-   }
-   void setBuffers() {
-      bindBuffers();
-      GLfloat vert[2][2]; // lines
-      printf("%f %f \n", this->x, this->y);
-      vert[0][0] = -(this->x);
-      vert[0][1] = -(this->y);
-      vert[1][0] = this->x;
-      vert[1][1] = this->y;
-      //printf("%f %f %f %f \n", vert[0][0], vert[0][1], vert[1][0], vert[1][1]);
-      glBufferData(GL_ARRAY_BUFFER, 2*2*sizeof(float), vert, GL_STATIC_DRAW );
-      glEnableVertexAttribArray(0);
-      glVertexAttribPointer(
-         0,                 // attribute 0, must match the layout in the shader.
-         2,                  // size
-         GL_FLOAT,           // type
-         GL_FALSE,           // normalized?
-         0,//24,             // stride
-         (void*)0            // array buffer offset
-      );
-   }
+    }
+    void setBuffers() {
+        bindBuffers();
+        GLfloat vert[2][2]; // lines
+        printf("%f %f \n", this->x, this->y);
+        vert[0][0] = -(this->x);
+        vert[0][1] = -(this->y);
+        vert[1][0] = this->x;
+        vert[1][1] = this->y;
+        //printf("%f %f %f %f \n", vert[0][0], vert[0][1], vert[1][0], vert[1][1]);
+        glBufferData(GL_ARRAY_BUFFER, 2*2*sizeof(float), vert, GL_STATIC_DRAW );
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(
+                0,                 // attribute 0, must match the layout in the shader.
+                2,                  // size
+                GL_FLOAT,           // type
+                GL_FALSE,           // normalized?
+                0,//24,             // stride
+                (void*)0            // array buffer offset
+        );
+    }
 
-   void rotation(int angle){
-      this->angle = angle;
-      this->x = 1.0f * cos(this->angle * (M_PI/180)) - 0.0f * sin(this->angle * (M_PI/180));
-      this->y = 1.0f * sin(this->angle * (M_PI/180)) + 0.0f * cos(this->angle * (M_PI/180));
-      setShaders();
-      setBuffers();
-   }
-   void draw(float tx, float ty){
-      bindBuffers();
-      //printf("%f %f \n", this->x, this->y);
-      glUniform1f(0, 1.0/12);  // scale  in vertex shader (scaling size)
-      glUniform2f(1, tx, ty);  // center in vertex shader
-      glUniform3f(3, line_color[0],line_color[1],line_color[2]);
+    void rotation(int angle){
+        this->angle = angle;
+        this->x = 1.0f * cos(this->angle * (M_PI/180)) - 0.0f * sin(this->angle * (M_PI/180));
+        this->y = 1.0f * sin(this->angle * (M_PI/180)) + 0.0f * cos(this->angle * (M_PI/180));
+        setShaders();
+        setBuffers();
+    }
+    void draw(float tx, float ty, int num){
+        bindBuffers();
+        //printf("%f %f \n", this->x, this->y);
+        glUniform1f(0, 1.0/num);  // scale  in vertex shader (scaling size)
+        glUniform2f(1, tx, ty);  // center in vertex shader
+        glUniform3f(3, line_color[0],line_color[1],line_color[2]);
 
-      glDrawArrays(GL_LINES, 0, 2);
-   }
-   void setColor(float r, float g, float b){
-      line_color[0]=r;line_color[1]=g;line_color[2]=b;
-   }
- private:
-   GLfloat line_color[3] = { 0.0, 1.0, 0.0 };
-   int angle;
-   float x,y;
+        glDrawArrays(GL_LINES, 0, 2);
+    }
+    void setColor(float r, float g, float b){
+        line_color[0]=r;line_color[1]=g;line_color[2]=b;
+    }
+
+private:
+    GLfloat line_color[3] = { 0.0, 1.0, 0.0 };
+    int angle;
+    float x,y;
 };
 
 class Linetab{
-   public:
-      Linetab(unsigned int seed, unsigned int n): num(n){
-         tab = new MyLine*[num];
+public:
+    Linetab(unsigned int seed, unsigned int n): num(n){
+        plx = -0.9f;
+        ply = -0.9f;
+        tab = new MyLine*[num];
 
-         angles.push_back(90);
-         srand(seed);
+        angles.push_back(90);
+        srand(seed);
 
-         for(int i = 0; i < num; ++i){
+        for(int i = 0; i < num; ++i){
             tab[i] = new MyLine[num];
-         }
+        }
 
-         for(int i = 1; i < num*num; ++i){
+        for(int i = 1; i < num*num; ++i){
             angles.push_back(rand()%360);
-         }
-         /*for(int i = 0; i < 100; ++i){
-            std::cout << angles[i] << std::endl;
-         } ANGLES WORK !*/
-         //printf("%s", "done enemyline array \n");
-      }
+        }
+        /*for(int i = 0; i < 100; ++i){
+           std::cout << angles[i] << std::endl;
+        } ANGLES WORK !*/
+        //printf("%s", "done enemyline array \n");
+    }
 
-      void setAngles()
-      {
-          for(int i = 0; i < num; i++){
-              for(int j = 0; j < num; j++) {
+    void setAngles()
+    {
+        for(int i = 0; i < num; i++){
+            for(int j = 0; j < num; j++) {
                 tab[i][j].rotation(angles[i * num + j]);
-              }
-          }
-      }
+            }
+        }
+    }
 
-      void setPlayerAngle(int x)
-      {
-          angles[0] += 1;
-          tab[0][0].rotation(angles[0]);
-      }
+    void setPlayerAngle(int x)
+    {
+        angles[0] += x;
+        tab[0][0].rotation(angles[0]);
+    }
 
-      void drawLines(float plx, float ply){ //przeskalować odstępy i wielkości linii
-         float lx = -0.9;
-         float ly = -0.9;
-         for(int i = 0; i < num; i++){
+    void movePlayerUp()
+    {
+        plx += 0.01f * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
+        ply += 0.01f * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
+    }
+
+    void movePlayerDown()
+    {
+        plx -= 0.01f * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
+        ply -= 0.01f * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
+    }
+
+    void drawLines(){ //przeskalować odstępy i wielkości linii
+        float lx = -0.9;
+        float ly = -0.9;
+        for(int i = 0; i < num; i++){
             for(int j = 0; j < num; j++){
-               if(i != 0 || j != 0) {
-                  tab[i][j].draw(lx,ly);
-               }
-               else{
-                  tab[0][0].draw(plx,ply);
-               }
-               lx += 0.2;
+                if(i != 0 || j != 0) {
+                    tab[i][j].draw(lx,ly, num);
+                }
+                else{
+                    tab[0][0].draw(plx,ply,num);
+                }
+                lx += 2.0f/num;
             }
             lx = -0.9;
-            ly += 0.2;
-         }
-      }
+            ly += 2.0f/num;
+        }
+    }
 
-   private:
-      MyLine **tab;
-      std::vector<int> angles;
-      int num;
+private:
+    MyLine **tab;
+    std::vector<int> angles;
+    int num;
+    float plx, ply;
 };
 
 
@@ -253,7 +268,6 @@ void MyWin::MainLoop(int seed, int n) {
    //MyTri   trian;
    Linetab lines(seed, n); //constructed with seed
    lines.setAngles();
-   float   plx = -0.9, ply = -0.9;
    do {
       glClear( GL_COLOR_BUFFER_BIT );
    
@@ -261,7 +275,7 @@ void MyWin::MainLoop(int seed, int n) {
       // =====================================================        Drawing
       //trian.draw();
       //line.draw(tx,ty);
-      lines.drawLines(plx,ply);
+      lines.drawLines();
       AGLErrors("main-afterdraw");
 
       glfwSwapBuffers(win()); // =============================   Swap buffers
@@ -269,19 +283,13 @@ void MyWin::MainLoop(int seed, int n) {
       //glfwWaitEvents();   
 
       if (glfwGetKey(win(), GLFW_KEY_DOWN ) == GLFW_PRESS) {
-         ply -= 0.01;
+         lines.movePlayerDown();
       } else if (glfwGetKey(win(), GLFW_KEY_UP ) == GLFW_PRESS) {
-         ply += 0.01;
+         lines.movePlayerUp();
       } else if (glfwGetKey(win(), GLFW_KEY_RIGHT ) == GLFW_PRESS) {
-         plx += 0.01;
-      } else if (glfwGetKey(win(), GLFW_KEY_LEFT ) == GLFW_PRESS) {
-         plx -= 0.01;
-      } else if (glfwGetKey(win(), GLFW_KEY_M ) == GLFW_PRESS) {
-         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-      } else if (glfwGetKey(win(), GLFW_KEY_K ) == GLFW_PRESS) {
-         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-      } else if (glfwGetKey(win(), GLFW_KEY_Z ) == GLFW_PRESS) {
           lines.setPlayerAngle(1);
+      } else if (glfwGetKey(win(), GLFW_KEY_LEFT ) == GLFW_PRESS) {
+          lines.setPlayerAngle(-1);
       }
 
 
