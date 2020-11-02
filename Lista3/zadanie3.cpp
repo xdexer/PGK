@@ -167,10 +167,8 @@ public:
         for(int i = 1; i < num*num; ++i){
             angles.push_back(rand()%360);
         }
-        /*for(int i = 0; i < 100; ++i){
-           std::cout << angles[i] << std::endl;
-        } ANGLES WORK !*/
-        //printf("%s", "done enemyline array \n");
+        absoluteCoords();
+        printPositions();
     }
 
     void setAngles()
@@ -218,10 +216,87 @@ public:
         }
     }
 
+    void absoluteCoords(){
+        float midx = -1.0f + step;
+        float midy = -1.0f + step;//rysuje środki odcinków
+        for(int i = 0; i < num; i++){
+            std::vector<std::pair<float,float>> row;
+            for(int j = 0; j < num; j++){//midx, midy to 0 dla wzoru
+                float rotatedx = step * cos(angles[i * 10 + j] * (M_PI/180)) - 0.0f * sin(angles[i * 10 + j] * (M_PI/180));
+                float rotatedy = step * sin(angles[i * 10 + j] * (M_PI/180)) + 0.0f * cos(angles[i * 10 + j] * (M_PI/180));
+                rotatedx += midx;
+                rotatedy += midy;
+                row.push_back(std::make_pair(rotatedx,rotatedy));
+                midx += 2*step; // we multiply step by 2 to determine the center of the next box
+            }
+            positions.push_back(row);
+            midx = -1.0f + step;
+            midy += 2*step;
+        }
+    }
+
+    float vectorProduct(float x1, float y1, float x2, float y2, float x3, float y3){
+        float xres1 = x3 - x1, yres1 = y3 - y1, xres2 = x2 - x1, yres2 = y2 - y1;
+        return xres1*yres2 - xres2*yres1;
+    }
+
+    bool lineIntersection(float midenemyx, float midenemyy, float enemyrx, float enemyry){//enemy rotated mają już prawidłowe pozycje
+        float plrotatedx = step * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
+        float plrotatedy = step * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
+
+        float plrx = plx + plrotatedx;//punkt A
+        float plry = ply + plrotatedy;
+
+        float plrminusx = plx - (plrx - plx); //punkt B
+        float plrminusy = ply - (plry - ply);
+
+        //enemyrx, enemyry punkt C
+
+        float enemyrminusx = midenemyx - (enemyrx - midenemyx);  //punkt D
+        float enemyrminusy = midenemyy - (enemyry - midenemyy);
+
+        float v1 = vectorProduct(enemyrminusx, enemyrminusy, enemyrx, enemyry, plrminusx, plrminusy);
+        float v2 = vectorProduct(enemyrminusx, enemyrminusy, enemyrx, enemyry, plrx, plry);
+        float v3 = vectorProduct(plrminusx, plrminusy, plrx, plry, enemyrminusx, enemyrminusy);
+        float v4 = vectorProduct(plrminusx, plrminusy, plrx, plry, enemyrx, enemyry);
+
+        if(v1 * v2 < 0 && v3 * v4 < 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    void collision(){
+        float midenemyx = -1.0f + step;
+        float midenemyy = -1.0f + step;//rysuje środki odcinków
+        for(int i = 0; i < num; i++){
+            for(int j = 0; j < num; j++){
+                if(i!= 0 || j != 0){
+                    if(lineIntersection(midenemyx, midenemyy, positions[i][j].first, positions[i][j].second)){
+                        std::cout << "Intersection with: " << i << j << std::endl;
+                    }
+                }
+                midenemyx += 2*step;
+            }
+            midenemyx = -1.0f + step;
+            midenemyy += 2*step;
+        }
+    }
+
+    void printPositions(){
+        for(int i = 0; i < num; i++){
+            for(int j = 0; j < num; j++){
+                std::cout << "i:" << i << " j: " << j << " " << positions[i][j].first << " " << positions[i][j].second << std::endl;
+            }
+        }
+    }
+
 private:
     MyLine **tab;
     std::vector<int> angles;
-    //std::vector<std::pair<int,int>> positions;
+    std::vector<std::vector<std::pair<float,float>>> positions;
     int num;
     float plx, ply, step;
 };
@@ -251,22 +326,10 @@ void MyWin::KeyCB(int key, int scancode, int action, int mods) {
     }
 }
 
-bool touched(float cx, float cy, float tx, float ty)
-{
-   float r = 2.0f / 23.0f;
-   float distance = sqrt(pow(cx-tx,2.0) + pow(cy-ty,2.0));
-   if(distance < 2 * r){ 
-      return false;
-   }else{
-      return true;
-   }
-}
-
 // ==========================================================================
 void MyWin::MainLoop(int seed, int n) {
    ViewportOne(0,0,wd,ht);
 
-   //EnemyLine line;
    //MyTri   trian;
    Linetab lines(seed, n); //constructed with seed
    lines.setAngles();
@@ -275,9 +338,8 @@ void MyWin::MainLoop(int seed, int n) {
    
       AGLErrors("main-loopbegin");
       // =====================================================        Drawing
-      //trian.draw();
-      //line.draw(tx,ty);
       lines.drawLines();
+      lines.collision();
       AGLErrors("main-afterdraw");
 
       glfwSwapBuffers(win()); // =============================   Swap buffers
@@ -308,7 +370,7 @@ int main(int argc, char *argv[]) {
        n = atoi(argv[2]);
    } else{
        seed = 2137;
-       n = 4;
+       n = 10;
    }
    win.MainLoop(seed,n);
    return 0;
