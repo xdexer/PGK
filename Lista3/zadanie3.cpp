@@ -130,6 +130,7 @@ public:
         setShaders();
         setBuffers();
     }
+
     void draw(float tx, float ty, int num){
         bindBuffers();
         //printf("%f %f \n", this->x, this->y);
@@ -168,7 +169,7 @@ public:
             angles.push_back(rand()%360);
         }
         absoluteCoords();
-        printPositions();
+       // printPositions();
     }
 
     void setAngles()
@@ -218,14 +219,15 @@ public:
 
     void absoluteCoords(){
         float midx = -1.0f + step;
-        float midy = -1.0f + step;//rysuje środki odcinków
+        float midy = -1.0f + step;//center of lines
         for(int i = 0; i < num; i++){
             std::vector<std::pair<float,float>> row;
             for(int j = 0; j < num; j++){//midx, midy to 0 dla wzoru
-                float rotatedx = step * cos(angles[i * 10 + j] * (M_PI/180)) - 0.0f * sin(angles[i * 10 + j] * (M_PI/180));
-                float rotatedy = step * sin(angles[i * 10 + j] * (M_PI/180)) + 0.0f * cos(angles[i * 10 + j] * (M_PI/180));
+                float rotatedx = step * cos(angles[i * num + j] * (M_PI/180)) - 0.0f * sin(angles[i * num + j] * (M_PI/180));
+                float rotatedy = step * sin(angles[i * num + j] * (M_PI/180)) + 0.0f * cos(angles[i * num + j] * (M_PI/180));
                 rotatedx += midx;
                 rotatedy += midy;
+                //std::cout << i << j << "  " << rotatedx << " " << rotatedy << " : "  << std::endl;
                 row.push_back(std::make_pair(rotatedx,rotatedy));
                 midx += 2*step; // we multiply step by 2 to determine the center of the next box
             }
@@ -247,13 +249,17 @@ public:
         float plrx = plx + plrotatedx;//punkt A
         float plry = ply + plrotatedy;
 
-        float plrminusx = plx - (plrx - plx); //punkt B
-        float plrminusy = ply - (plry - ply);
+        //float plrminusx = plx - (plrx - plx); //punkt B
+        //float plrminusy = ply - (plry - ply);
 
+        float plrminusx = plx - plrotatedx; //punkt B
+        float plrminusy = ply - plrotatedy;
         //enemyrx, enemyry punkt C
 
         float enemyrminusx = midenemyx - (enemyrx - midenemyx);  //punkt D
         float enemyrminusy = midenemyy - (enemyry - midenemyy);
+        //float enemyrminusx = midenemyx - enemyrx ;  //punkt D
+        //float enemyrminusy = midenemyy - enemyry;
 
         float v1 = vectorProduct(enemyrminusx, enemyrminusy, enemyrx, enemyry, plrminusx, plrminusy);
         float v2 = vectorProduct(enemyrminusx, enemyrminusy, enemyrx, enemyry, plrx, plry);
@@ -275,7 +281,9 @@ public:
             for(int j = 0; j < num; j++){
                 if(i!= 0 || j != 0){
                     if(lineIntersection(midenemyx, midenemyy, positions[i][j].first, positions[i][j].second)){
-                        std::cout << "Intersection with: " << i << j << std::endl;
+                        float enemyrminusx = midenemyx - (positions[i][j].first - midenemyx);  //punkt D
+                        float enemyrminusy = midenemyy - (positions[i][j].second - midenemyy);
+                        std::cout << "Intersection with: " << i << j << " " << positions[i][j].first << positions[i][j].second << " : " << enemyrminusx << enemyrminusy << std::endl;
                     }
                 }
                 midenemyx += 2*step;
@@ -284,12 +292,42 @@ public:
             midenemyy += 2*step;
         }
     }
+    void playerPosition(){ //player dobrze obliczany
+        float plrotatedx = step * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
+        float plrotatedy = step * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
+        float plrx = plx + plrotatedx;//punkt A
+        float plry = ply + plrotatedy;
+        float plrminusx = plx - plrotatedx; //punkt B
+        float plrminusy = ply - plrotatedy;
+        std::cout << "Player : " << plrx << " " << plry << " : " << plrminusx << " " << plrminusy << std::endl;
+    }
 
     void printPositions(){
+        float plrotatedx = step * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
+        float plrotatedy = step * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
+
+        float plrx = plx + plrotatedx;//punkt A
+        float plry = ply + plrotatedy;
+
+        //float plrminusx = plx - (plrx - plx); //punkt B
+        //float plrminusy = ply - (plry - ply);
+
+        float plrminusx = plx - plrotatedx; //punkt B
+        float plrminusy = ply - plrotatedy;
+        //enemyrx, enemyry punkt C
+
+
+        float midenemyx = -1.0f + step;
+        float midenemyy = -1.0f + step;//rysuje środki odcinków
         for(int i = 0; i < num; i++){
             for(int j = 0; j < num; j++){
-                std::cout << "i:" << i << " j: " << j << " " << positions[i][j].first << " " << positions[i][j].second << std::endl;
+                float enemyrminusx = midenemyx - (positions[i][j].first - midenemyx);  //punkt D
+                float enemyrminusy = midenemyy - (positions[i][j].second - midenemyy);
+                std::cout << i << j << " " <<  positions[i][j].first << " " << positions[i][j].second << " : " << enemyrminusx << " " << enemyrminusy << std::endl;
+                midenemyx += 2*step;
             }
+            midenemyx = -1.0f + step;
+            midenemyy += 2*step;
         }
     }
 
@@ -339,6 +377,8 @@ void MyWin::MainLoop(int seed, int n) {
       AGLErrors("main-loopbegin");
       // =====================================================        Drawing
       lines.drawLines();
+      lines.playerPosition();
+      //lines.printPositions();
       lines.collision();
       AGLErrors("main-afterdraw");
 
