@@ -60,7 +60,7 @@ public:
       )END");
    }
    void draw() {
-      bindProgram();
+      //bindProgram();
       glDrawArrays(GL_TRIANGLES, 0, 3);
    }
 };
@@ -82,22 +82,30 @@ public:
          layout(location = 0) in vec2 pos;
          layout(location = 0) uniform float scale;
          layout(location = 1) uniform vec2  center;
+         layout(location = 3) uniform vec3  cross_color;
          out vec4 vtex;
+         out vec4 vcolor;
 
          void main(void) {
             vec2 p = (pos * scale + center);
             gl_Position = vec4(p, 0.0, 1.0);
+         if(gl_VertexID == 0){
+                vcolor = vec4(cross_color, 1.0);
+            }
+         else{
+                vcolor = vec4(0.0, 0.0, 1.0, 1.0);
+            }
          }
 
       )END", R"END(
 
          #version 330
          #extension GL_ARB_explicit_uniform_location : require
-         layout(location = 3) uniform vec3  cross_color;
+         in vec4 vcolor;
          out vec4 color;
 
          void main(void) {
-            color = vec4(cross_color,1.0);
+            color = vcolor;
          }
 
       )END");
@@ -127,6 +135,11 @@ public:
         this->angle = angle;
         this->x = 1.0f * cos(this->angle * (M_PI/180)) - 0.0f * sin(this->angle * (M_PI/180));
         this->y = 1.0f * sin(this->angle * (M_PI/180)) + 0.0f * cos(this->angle * (M_PI/180));
+        setShaders();
+        setBuffers();
+    }
+
+    void settings(){
         setShaders();
         setBuffers();
     }
@@ -169,6 +182,7 @@ public:
             angles.push_back(rand()%360);
         }
         absoluteCoords();
+        tab[0][0].setColor(1,0,0);
        // printPositions();
     }
 
@@ -249,17 +263,12 @@ public:
         float plrx = plx + plrotatedx;//punkt A
         float plry = ply + plrotatedy;
 
-        //float plrminusx = plx - (plrx - plx); //punkt B
-        //float plrminusy = ply - (plry - ply);
-
         float plrminusx = plx - plrotatedx; //punkt B
         float plrminusy = ply - plrotatedy;
         //enemyrx, enemyry punkt C
 
         float enemyrminusx = midenemyx - (enemyrx - midenemyx);  //punkt D
         float enemyrminusy = midenemyy - (enemyry - midenemyy);
-        //float enemyrminusx = midenemyx - enemyrx ;  //punkt D
-        //float enemyrminusy = midenemyy - enemyry;
 
         float v1 = vectorProduct(enemyrminusx, enemyrminusy, enemyrx, enemyry, plrminusx, plrminusy);
         float v2 = vectorProduct(enemyrminusx, enemyrminusy, enemyrx, enemyry, plrx, plry);
@@ -274,16 +283,21 @@ public:
 
     }
 
-    void collision(){
+    bool collision(){
         float midenemyx = -1.0f + step;
         float midenemyy = -1.0f + step;//rysuje środki odcinków
         for(int i = 0; i < num; i++){
             for(int j = 0; j < num; j++){
                 if(i!= 0 || j != 0){
                     if(lineIntersection(midenemyx, midenemyy, positions[i][j].first, positions[i][j].second)){
-                        float enemyrminusx = midenemyx - (positions[i][j].first - midenemyx);  //punkt D
-                        float enemyrminusy = midenemyy - (positions[i][j].second - midenemyy);
-                        std::cout << "Intersection with: " << i << j << " " << positions[i][j].first << positions[i][j].second << " : " << enemyrminusx << enemyrminusy << std::endl;
+                        if(i == num - 1 && j == num - 1){
+                            std::cout << "Win" << std::endl;
+                            return true;
+                        }else{
+                            std::cout << "Lost" << std::endl;
+                            return true;
+                        }
+                        std::cout << "Intersection with: " << i << j << std::endl;
                     }
                 }
                 midenemyx += 2*step;
@@ -291,7 +305,10 @@ public:
             midenemyx = -1.0f + step;
             midenemyy += 2*step;
         }
+        return false;
     }
+
+
     void playerPosition(){ //player dobrze obliczany
         float plrotatedx = step * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
         float plrotatedy = step * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
@@ -303,20 +320,6 @@ public:
     }
 
     void printPositions(){
-        float plrotatedx = step * cos(angles[0] * (M_PI/180)) - 0.0f * sin(angles[0] * (M_PI/180));
-        float plrotatedy = step * sin(angles[0] * (M_PI/180)) + 0.0f * cos(angles[0] * (M_PI/180));
-
-        float plrx = plx + plrotatedx;//punkt A
-        float plry = ply + plrotatedy;
-
-        //float plrminusx = plx - (plrx - plx); //punkt B
-        //float plrminusy = ply - (plry - ply);
-
-        float plrminusx = plx - plrotatedx; //punkt B
-        float plrminusy = ply - plrotatedy;
-        //enemyrx, enemyry punkt C
-
-
         float midenemyx = -1.0f + step;
         float midenemyy = -1.0f + step;//rysuje środki odcinków
         for(int i = 0; i < num; i++){
@@ -370,16 +373,21 @@ void MyWin::MainLoop(int seed, int n) {
 
    //MyTri   trian;
    Linetab lines(seed, n); //constructed with seed
+   bool col = false;
+   int previousMove = 0;
+   int previousRotation = 0;
    lines.setAngles();
    do {
       glClear( GL_COLOR_BUFFER_BIT );
    
       AGLErrors("main-loopbegin");
       // =====================================================        Drawing
+      //trian.draw();
       lines.drawLines();
-      lines.playerPosition();
+
+      //lines.playerPosition();
       //lines.printPositions();
-      lines.collision();
+      //col = lines.collision();
       AGLErrors("main-afterdraw");
 
       glfwSwapBuffers(win()); // =============================   Swap buffers
@@ -387,13 +395,29 @@ void MyWin::MainLoop(int seed, int n) {
       //glfwWaitEvents();   
 
       if (glfwGetKey(win(), GLFW_KEY_DOWN ) == GLFW_PRESS) {
-         lines.movePlayerDown();
+          col = lines.collision();
+          if(!(previousMove == 1 && col)) {
+              lines.movePlayerDown();
+              previousMove = 1;
+          }
       } else if (glfwGetKey(win(), GLFW_KEY_UP ) == GLFW_PRESS) {
-         lines.movePlayerUp();
+          col = lines.collision();
+          if(!(previousMove == 2 && col)) {
+              lines.movePlayerUp();
+              previousMove = 2;
+          }
       } else if (glfwGetKey(win(), GLFW_KEY_RIGHT ) == GLFW_PRESS) {
-          lines.setPlayerAngle(1);
+          col = lines.collision();
+          if(!(previousRotation == 1 && col)) {
+              lines.setPlayerAngle(1);
+              previousRotation = 1;
+          }
       } else if (glfwGetKey(win(), GLFW_KEY_LEFT ) == GLFW_PRESS) {
-          lines.setPlayerAngle(-1);
+          col = lines.collision();
+          if(!(previousRotation == 2 && col)) {
+              lines.setPlayerAngle(-1);
+              previousRotation = 2;
+          }
       }
 
 
