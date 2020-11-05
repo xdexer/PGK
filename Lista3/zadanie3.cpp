@@ -169,20 +169,21 @@ public:
         step = 2.0f / (2*num); //needed to estimate center of the box where line will be put in
         plx = -1.0f + step;
         ply = -1.0f + step;
-        tab = new MyLine*[num];
-
+        tab.resize(num);
         angles.push_back(90);
         srand(seed);
 
         for(int i = 0; i < num; ++i){
-            tab[i] = new MyLine[num];
+           for(int j = 0; j < num; ++j) {
+               std::unique_ptr<MyLine> ptr(new MyLine());
+               tab[i].push_back(std::move(ptr));
+           }
         }
-
         for(int i = 1; i < num*num; ++i){
             angles.push_back(rand()%360);
         }
         absoluteCoords();
-        tab[0][0].setColor(1,0,0);
+        tab[0][0]->setColor(1,0,0);
        // printPositions();
     }
 
@@ -190,7 +191,7 @@ public:
     {
         for(int i = 0; i < num; i++){
             for(int j = 0; j < num; j++) {
-                tab[i][j].rotation(angles[i * num + j]);
+                tab[i][j]->rotation(angles[i * num + j]);
             }
         }
     }
@@ -198,7 +199,7 @@ public:
     void setPlayerAngle(int x)
     {
         angles[0] += x;
-        tab[0][0].rotation(angles[0]);
+        tab[0][0]->rotation(angles[0]);
     }
 
     void movePlayerUp()
@@ -219,10 +220,10 @@ public:
         for(int i = 0; i < num; i++){
             for(int j = 0; j < num; j++){
                 if(i != 0 || j != 0) {
-                    tab[i][j].draw(lx,ly, num);
+                    tab[i][j]->draw(lx,ly, num);
                 }
                 else{
-                    tab[0][0].draw(plx,ply,num);
+                    tab[0][0]->draw(plx,ply,num);
                 }
                 lx += 2*step; // we multiply step by 2 to determine the center of the next box
             }
@@ -335,7 +336,7 @@ public:
     }
 
 private:
-    MyLine **tab;
+    std::vector<std::vector<std::unique_ptr<MyLine>>> tab;
     std::vector<int> angles;
     std::vector<std::vector<std::pair<float,float>>> positions;
     int num;
