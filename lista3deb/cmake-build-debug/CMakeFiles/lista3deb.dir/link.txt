@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/lista3deb.dir/AGL3Window.cpp.o CMakeFiles/lista3deb.dir/zadanie3.cpp.o CMakeFiles/lista3deb.dir/MyLine.cpp.o CMakeFiles/lista3deb.dir/Linetab.cpp.o  -o lista3deb  -lepoxy -lGL -lglfw 

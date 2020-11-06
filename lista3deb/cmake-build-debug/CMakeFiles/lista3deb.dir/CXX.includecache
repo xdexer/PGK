@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dominik/Desktop/ISSP/2020-2021/PGK/lista3deb/AGL3Window.cpp
+unistd.h
+-
+stdexcept
+-
+iostream
+-
+vector
+-
+AGL3Window.hpp
+/home/dominik/Desktop/ISSP/2020-2021/PGK/lista3deb/AGL3Window.hpp
+
+/home/dominik/Desktop/ISSP/2020-2021/PGK/lista3deb/AGL3Window.hpp
+epoxy/gl.h
+-
+epoxy/glx.h
+-
+GLFW/glfw3.h
+-
+array
+-
+

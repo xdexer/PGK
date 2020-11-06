@@ -8,6 +8,9 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
+#include <GLFW/glfw3.h>
 
 class AGLDrawable {
 public:

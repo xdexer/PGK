@@ -1,0 +1,3 @@
+/home/dominik/Desktop/ISSP/2020-2021/PGK/lista3deb/CMakeFiles/rebuild_cache.dir
+/home/dominik/Desktop/ISSP/2020-2021/PGK/lista3deb/CMakeFiles/edit_cache.dir
+/home/dominik/Desktop/ISSP/2020-2021/PGK/lista3deb/CMakeFiles/lista3deb.dir
