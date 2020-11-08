@@ -30,7 +30,7 @@ public:
    void  GetCursorNDC(float *x, float *y);            // mouse position VpOne
 
    // Handles key 'f' for switching fullscreen mode:
-   virtual void Resize( int _wd, int _ht ); // Sets Win:wd,ht,aspec +glViewp
+   virtual void Resize(int xpos, int ypos, int _wd, int _ht ); // Sets Win:wd,ht,aspec +glViewp
    virtual void KeyCB(int key, int scancode, int action, int mods);
    virtual void MouseButtonCB(int button,    int action, int mods);
    virtual void ScrollCB(double xp, double yp);

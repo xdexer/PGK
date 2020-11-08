@@ -47,11 +47,11 @@ void AGLWindow::GetCursorNDC(float *x, float *y) {
    *y = 2.0*(ht-ypos-vty)/vht - 1.0;
 }
 
-void AGLWindow::Resize( int _wd, int _ht ) {
+void AGLWindow::Resize(int xpos, int ypos, int _wd, int _ht ) {
    wd    = _wd;
    ht    = _ht;
    aspect= float(ht)/float(wd);
-   ViewportOne(0, 0, (GLsizei) wd, (GLsizei) ht);
+   ViewportOne(xpos, ypos, (GLsizei) wd, (GLsizei) ht);
 }
 
 void AGLWindow::KeyCB(int key, int scancode, int action, int mods) {
@@ -151,7 +151,7 @@ void AGLWindow::Init(int width, int height, const char *name, int fullscr, int v
 void AGLWindow::CallbackResize(GLFWwindow* window, int cx, int cy) {
    void *ptr = glfwGetWindowUserPointer( window );
    if ( AGLWindow *winPtr = static_cast<AGLWindow*>( ptr ) )
-      winPtr->Resize( cx, cy );
+      winPtr->Resize( (cx-cy)/2 ,0 ,cy, cy ); //dodanie pozycji wobec, której ma się skalować i skalowanie względem wysokości monitora
 }
 
 void AGLWindow::CallbackKey(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -196,5 +196,5 @@ void AGLWindow::SetFullScreen( bool fullscreen ) {
       glfwShowWindow(window);
    }
    glfwGetFramebufferSize( window, &wd, &ht );
-   Resize(wd, ht);
+   Resize(0,0, wd, ht);
 }
