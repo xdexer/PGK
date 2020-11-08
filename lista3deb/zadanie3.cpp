@@ -6,12 +6,6 @@
 // AGL3 example usage 
 //===========================================================================
 #include <stdlib.h>
-#include <stdio.h>
-#include <cmath>
-#include <random>
-#include <vector>
-#include <sstream>
-#include <memory>
 #include <array>
 #include <AGL3Window.hpp>
 #include <Linetab.h>
@@ -22,54 +16,52 @@
 // ==========================================================================
 // Drawable object: no-data only: vertex/fragment programs
 // ==========================================================================
-
-class BackgroundRectangle : public AGLDrawable
+class Background : public AGLDrawable
 {
 public:
-    BackgroundRectangle(GLfloat xStart = -1, GLfloat yStart = 1, GLfloat xEnd = 1, GLfloat yEnd = -1);
+    Background(int n, GLfloat xStart = -1, GLfloat yStart = 1, GLfloat xEnd = 1, GLfloat yEnd = -1);
     void setShaders();
     void setBuffers();
     void draw();
 private:
-    std::array<std::array<GLfloat,2>, 6> vert;
+    std::array<std::array<GLfloat,2>, 6> squareVertices;
+    float num;
 };
 
-BackgroundRectangle::BackgroundRectangle(GLfloat xStart, GLfloat yStart, GLfloat xEnd, GLfloat yEnd)
+Background::Background(int n,GLfloat xStart, GLfloat yStart, GLfloat xEnd, GLfloat yEnd)
 {
-
-    vert[0][0] = xStart;
-    vert[0][1] = yStart;
-    vert[1][0] = xEnd;
-    vert[1][1] = yStart;
-    vert[2][0] = xStart;
-    vert[2][1] = yEnd;
-    vert[3][0] = xEnd;
-    vert[3][1] = yEnd;
-    vert[4][0] = xStart;
-    vert[4][1] = yEnd;
-    vert[5][0] = xEnd;
-    vert[5][1] = yStart;
-
+    num = 0.5f * n;
+    squareVertices[0][0] = xStart;
+    squareVertices[0][1] = yStart;
+    squareVertices[1][0] = xEnd;
+    squareVertices[1][1] = yStart;
+    squareVertices[2][0] = xStart;
+    squareVertices[2][1] = yEnd;
+    squareVertices[3][0] = xEnd;
+    squareVertices[3][1] = yEnd;
+    squareVertices[4][0] = xStart;
+    squareVertices[4][1] = yEnd;
+    squareVertices[5][0] = xEnd;
+    squareVertices[5][1] = yStart;
 
     setShaders();
     setBuffers();
 }
-void BackgroundRectangle::setShaders()
+void Background::setShaders()
 {
     compileShaders(R"END(
                    #version 330
                    #extension GL_ARB_explicit_uniform_location : require
                    #extension GL_ARB_shading_language_420pack : require
                    layout(location = 0) in vec2 pos;
-                   layout(location = 0) uniform float scale;
-                   layout(location = 1) uniform vec2  center;
                    layout(location = 2) uniform vec3  first_color;
                    layout(location = 3) uniform vec3  second_color;
                    out vec2 pvec;
                    flat out vec3 color1;
                    flat out vec3 color2;
+
                    void main(void) {
-                       vec2 p = (pos * scale + center);
+                       vec2 p = pos;
                        gl_Position = vec4(p, 0.0, 1.0);
                        color1 = first_color;
                        color2 = second_color;
@@ -77,29 +69,31 @@ void BackgroundRectangle::setShaders()
                    }
                    )END", R"END(
                           #version 330
+                          #extension GL_ARB_explicit_uniform_location : require
+                          #extension GL_ARB_shading_language_420pack : require
+                          layout(location = 4) uniform float n;
                           flat in vec3 color1;
                           flat in vec3  color2;
                           in vec2 pvec;
                           void main(void) {
-                                //pvec.x > -1 && pvec.x < -0.8 || pvec.x > -0.6 && pvec.x < -0.4 || pvec.x > -0.2 && pvec.x < 0 || pvec.x > 0.2 && pvec.x < 0.4 || pvec.x > 0.6 && pvec.x < 0.8)
-                                if(pvec.x > -1 && pvec.x < -0.8 || pvec.x > -0.6 && pvec.x < -0.4 || pvec.x > -0.2 && pvec.x < 0 || pvec.x > 0.2 && pvec.x < 0.4 || pvec.x > 0.6 && pvec.x < 0.8)
-                                {
-                                    gl_FragColor = vec4(color1, 1);
-                                }
-                                else
-                                {
-                                    gl_FragColor = vec4(color2, 1);
-                                }
+                                float total = floor(pvec.x * n) + floor(pvec.y * n);
+                                bool isEven = mod(total,2.0) == 0.0;
+                                 gl_FragColor = (isEven)? vec4(color1,1) : vec4(color2, 1);
                           }
                           )END");
 }
 
 
 
-void BackgroundRectangle::setBuffers()
+void Background::setBuffers()
 {
     bindBuffers();
-    GLfloat temp[6][2] = {{vert[0][0], vert[0][1]}, {vert[1][0], vert[1][1]}, {vert[2][0], vert[2][1]}, {vert[3][0], vert[3][1]}, {vert[4][0], vert[4][1]}, {vert[5][0], vert[5][1]}};
+    GLfloat temp[6][2] = {{squareVertices[0][0], squareVertices[0][1]},
+                          {squareVertices[1][0], squareVertices[1][1]},
+                          {squareVertices[2][0], squareVertices[2][1]},
+                          {squareVertices[3][0], squareVertices[3][1]},
+                          {squareVertices[4][0], squareVertices[4][1]},
+                          {squareVertices[5][0], squareVertices[5][1]}};
     glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), temp, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(
@@ -112,16 +106,16 @@ void BackgroundRectangle::setBuffers()
     );
 }
 
-void BackgroundRectangle::draw()
+void Background::draw()
 {
     bindProgram();
     bindBuffers();
-    glUniform1f(0, 1.0f);  // scale  in vertex shader
-    glUniform2f(1, 0.0f, 0.0f);  // center in vertex shader
     glUniform3f(2, 1.0, 1.0, 1.0);
     glUniform3f(3, 0.0, 0.0, 0.0);
+    glUniform1f(4, num);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 }
+
 
 // ==========================================================================
 // Window Main Loop Inits ...................................................
@@ -151,9 +145,8 @@ void MyWin::KeyCB(int key, int scancode, int action, int mods) {
 void MyWin::MainLoop(int seed, int n) {
    ViewportOne(0,0,wd,ht);
 
-   //MyTri   trian;
    Linetab lines(seed, n); //constructed with seed
-   BackgroundRectangle background;
+   Background background(n);
    bool col = false;
    int previousMove = 0;
    int previousRotation = 0;
@@ -163,7 +156,6 @@ void MyWin::MainLoop(int seed, int n) {
    
       AGLErrors("main-loopbegin");
       // =====================================================        Drawing
-      //trian.draw();
       background.draw();
       lines.drawLines();
 
