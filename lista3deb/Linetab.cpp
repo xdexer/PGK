@@ -5,6 +5,7 @@
 #include "Linetab.h"
 
 Linetab::Linetab(unsigned int seed, unsigned int n): num(n){
+    win = false;
     step = 2.0f / (2*num); //needed to estimate center of the box where line will be put in
     plx = -1.0f + step;
     ply = -1.0f + step;
@@ -14,7 +15,7 @@ Linetab::Linetab(unsigned int seed, unsigned int n): num(n){
 
     for(int i = 0; i < num; ++i){
         for(int j = 0; j < num; ++j) {
-            std::unique_ptr<MyLine> ptr(new MyLine());
+            std::unique_ptr<MyLine> ptr(new MyLine(num));
             tab[i].push_back(std::move(ptr));
         }
     }
@@ -59,10 +60,10 @@ void Linetab::drawLines(){
     for(int i = 0; i < num; i++){
         for(int j = 0; j < num; j++){
             if(i != 0 || j != 0) {
-                tab[i][j]->draw(lx,ly, num);
+                tab[i][j]->draw(lx,ly);
             }
             else{
-                tab[0][0]->draw(plx,ply,num);
+                tab[0][0]->draw(plx,ply);
             }
             lx += 2*step; // we multiply step by 2 to determine the center of the next box
         }
@@ -132,6 +133,7 @@ bool Linetab::collision(){
                 if(lineIntersection(midenemyx, midenemyy, positions[i][j].first, positions[i][j].second)){
                     if(i == num - 1 && j == num - 1){
                         std::cout << "Win :" << glfwGetTime() <<std::endl;
+                        win = true;
                         return true;
                     }else{
                         std::cout << "Lost" << std::endl;
@@ -146,6 +148,21 @@ bool Linetab::collision(){
         midenemyy += 2*step;
     }
     return false;
+}
+
+bool Linetab::getWin() {
+    if(win){
+        return true;
+    }
+    return false;
+}
+
+void Linetab::animation() {
+    for(int i = 0; i < num; i++){
+        for(int j = 0; j < num; j++){
+            tab[i][j]->setScale();
+        }
+    }
 }
 
 void Linetab::playerPosition(){ //player dobrze obliczany

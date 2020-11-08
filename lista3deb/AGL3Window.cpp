@@ -190,7 +190,7 @@ void AGLWindow::SetFullScreen( bool fullscreen ) {
       glfwGetWindowSize( window, &winSize[0], &winSize[1] );
 
       const GLFWvidmode * mode = glfwGetVideoMode(monitor);
-      glfwSetWindowMonitor( window, monitor, 0, 0, mode->width, mode->width, 0 ); //making square mode NOT WORKING
+      glfwSetWindowMonitor( window, monitor, 0, 0, mode->height, mode->height, 0 ); //making square mode NOT WORKING
    } else {
       glfwSetWindowMonitor( window, nullptr,  winPos[0], winPos[1], winSize[0], winSize[1], 0 );
       glfwShowWindow(window);

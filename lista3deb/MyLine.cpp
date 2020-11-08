@@ -67,14 +67,26 @@ void MyLine::rotation(int angle){
     this->angle = angle;
     this->x = 1.0f * cos(this->angle * (M_PI/180)) - 0.0f * sin(this->angle * (M_PI/180));
     this->y = 1.0f * sin(this->angle * (M_PI/180)) + 0.0f * cos(this->angle * (M_PI/180));
-    setShaders();
+    //setShaders();
     setBuffers();
 }
 
-void MyLine::draw(float tx, float ty, int num){
+void MyLine::setScale() {
+    //std::cout << "setScale" << scale;
+    if(scale < 0.0f){
+        scaleStep = 0.05f;
+    }
+    else if(scale > 1.0f){
+        scaleStep = -0.05f;
+    }
+    scale += scaleStep;
+}
+
+void MyLine::draw(float tx, float ty){
+    bindProgram();
     bindBuffers();
     //printf("%f %f \n", this->x, this->y);
-    glUniform1f(0, 1.0/num);  // scale  in vertex shader (scaling size)
+    glUniform1f(0, scale);  // scale  in vertex shader (scaling size)
     glUniform2f(1, tx, ty);  // center in vertex shader
     glUniform3f(3, line_color[0],line_color[1],line_color[2]);
 

@@ -28,13 +28,15 @@ public:
     bool collision();
     void playerPosition();
     void printPositions();
-
+    bool getWin();
+    void animation();
 private:
     std::vector<std::vector<std::unique_ptr<MyLine>>> tab;
     std::vector<int> angles;
     std::vector<std::vector<std::pair<float,float>>> positions;
     int num;
     float plx, ply, step;
+    bool win;
 };
 
 
