@@ -145,7 +145,8 @@ void AGLWindow::Init(int width, int height, const char *name, int fullscr, int v
    // Ensure we can capture the escape key being pressed below
    //glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
    glfwSwapInterval(1);
-   glEnable(GL_MULTISAMPLE);
+    glDisable(GL_CULL_FACE);
+    glEnable(GL_MULTISAMPLE);
 }
 
 void AGLWindow::CallbackResize(GLFWwindow* window, int cx, int cy) {

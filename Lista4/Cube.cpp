@@ -2,25 +2,61 @@
 // Created by dominik on 16.11.2020.
 //
 
-#include "Sphere.h"
+#include "Cube.h"
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-void Sphere::setBuffers() {
+
+void Cube::setBuffers() {
     bindBuffers();
     //glGenVertexArrays(1, &VAO);
     //glGenBuffers(1,&VBO);
 
     //glBindVertexArray(VAO);
     float vertices[] = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, -0.5f,
+            -1.0f, -1.0f, -1.0f,
+            1.0f, -1.0f, -1.0f,
+            1.0f, 1.0f, -1.0f,
+            1.0f, 1.0f, -1.0f,
+            -1.0f, 1.0f, -1.0f,
+            -1.0f, -1.0f, -1.0f,
+
+            -1.0f, -1.0f,  1.0f,
+            1.0f, -1.0f,  1.0f,
+            1.0f,  1.0f,  1.0f,
+            1.0f,  1.0f,  1.0f,
+            -1.0f,  1.0f,  1.0f,
+            -1.0f, -1.0f,  1.0f,
+
+            -1.0f,  1.0f,  1.0f,
+            -1.0f,  1.0f, -1.0f,
+            -1.0f, -1.0f, -1.0f,
+            -1.0f, -1.0f, -1.0f,
+            -1.0f, -1.0f,  1.0f,
+            -1.0f,  1.0f,  1.0f,
+
+            1.0f,  1.0f,  1.0f,
+            1.0f,  1.0f, -1.0f,
+            1.0f, -1.0f, -1.0f,
+            1.0f, -1.0f, -1.0f,
+            1.0f, -1.0f,  1.0f,
+            1.0f,  1.0f,  1.0f,
+
+            -1.0f, -1.0f, -1.0f,
+            1.0f, -1.0f, -1.0f,
+            1.0f, -1.0f,  1.0f,
+            1.0f, -1.0f,  1.0f,
+            -1.0f, -1.0f,  1.0f,
+            -1.0f, -1.0f, -1.0f,
+
+            -1.0f,  1.0f, -1.0f,
+            1.0f,  1.0f, -1.0f,
+            1.0f,  1.0f,  1.0f,
+            1.0f,  1.0f,  1.0f,
+            -1.0f,  1.0f,  1.0f,
+            -1.0f,  1.0f, -1.0f,
     };
 
     //glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -30,7 +66,7 @@ void Sphere::setBuffers() {
     glEnableVertexAttribArray(0);
 }
 
-void Sphere::setShaders() {
+void Cube::setShaders() {
     compileShaders(R"END(
         #version 330
         #extension GL_ARB_explicit_uniform_location : require
@@ -43,19 +79,18 @@ void Sphere::setShaders() {
 
         void main(void){
             gl_Position = projection * view * model * vec4(pos, 1.0f);
-            vcolor = vec4(0.0,1.0,0.0,1.0);
+            vcolor = vec4(0.0,1.0,0.0,0.5);
             }
 )END", R"END(
         #version 330
         in vec4 vcolor;
-
         void main(void){
             gl_FragColor = vcolor;
             }
 )END");
 }
 
-void Sphere::draw() {
+void Cube::draw() {
     bindProgram();
     bindBuffers();
 

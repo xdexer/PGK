@@ -6,7 +6,7 @@
 #include <array>
 #include <AGL3Window.hpp>
 #include <Camera.h>
-#include <Sphere.h>
+#include <Cube.h>
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 2.0f));
@@ -76,10 +76,7 @@ void MyWindow::ScrollCB(double xp, double yp) {
 
 void MyWindow::MainLoop(int seed, int n) {
     ViewportOne(0,0,wd,ht);
-    bool col = false;
-    int previousMove = 0;
-    int previousRotation = 0;
-    Sphere player;
+    Cube board;
 
     do {
         glClear( GL_COLOR_BUFFER_BIT );
@@ -89,8 +86,7 @@ void MyWindow::MainLoop(int seed, int n) {
 
 
         WaitForFixedFPS(1.0/60); //same speed for all devices
-        //cameraShader.bindProgram();
-        processInput(); //keyboardinput
+        processInput(); //keyboard input
         // pass projection matrix to shader
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom),1.0f,0.1f,100.0f);
         camera.setUniformMat4(3, projection);
@@ -101,7 +97,7 @@ void MyWindow::MainLoop(int seed, int n) {
         camera.setUniformMat4(4, view);
         AGLErrors("main-loopbegin");
         // =====================================================        Drawing
-        player.draw();
+        board.draw();
         AGLErrors("main-afterdraw");
 
         // input/output events

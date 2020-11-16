@@ -170,32 +170,32 @@ AGL3Window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/AGL3Window.cpp.s
 .PHONY : AGL3Window.cpp.s
 
-Sphere.o: Sphere.cpp.o
+Cube.o: Cube.cpp.o
 
-.PHONY : Sphere.o
+.PHONY : Cube.o
 
 # target to build an object file
-Sphere.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Sphere.cpp.o
-.PHONY : Sphere.cpp.o
+Cube.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Cube.cpp.o
+.PHONY : Cube.cpp.o
 
-Sphere.i: Sphere.cpp.i
+Cube.i: Cube.cpp.i
 
-.PHONY : Sphere.i
+.PHONY : Cube.i
 
 # target to preprocess a source file
-Sphere.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Sphere.cpp.i
-.PHONY : Sphere.cpp.i
+Cube.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Cube.cpp.i
+.PHONY : Cube.cpp.i
 
-Sphere.s: Sphere.cpp.s
+Cube.s: Cube.cpp.s
 
-.PHONY : Sphere.s
+.PHONY : Cube.s
 
 # target to generate assembly for a file
-Sphere.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Sphere.cpp.s
-.PHONY : Sphere.cpp.s
+Cube.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Cube.cpp.s
+.PHONY : Cube.cpp.s
 
 main.o: main.cpp.o
 
@@ -236,9 +236,9 @@ help:
 	@echo "... AGL3Window.o"
 	@echo "... AGL3Window.i"
 	@echo "... AGL3Window.s"
-	@echo "... Sphere.o"
-	@echo "... Sphere.i"
-	@echo "... Sphere.s"
+	@echo "... Cube.o"
+	@echo "... Cube.i"
+	@echo "... Cube.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -8,5 +8,5 @@ add_executable(Lista4
         AGL3Drawable.hpp
         AGL3Window.cpp
         AGL3Window.hpp
-        main.cpp Camera.h Sphere.cpp Sphere.h)
+        main.cpp Camera.h Cube.cpp Cube.h)
 target_link_libraries(Lista4 ${OpenGlLinkers})
