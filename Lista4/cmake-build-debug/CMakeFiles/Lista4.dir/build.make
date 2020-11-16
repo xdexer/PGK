@@ -90,35 +90,9 @@ CMakeFiles/Lista4.dir/AGL3Window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/AGL3Window.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.cpp -o CMakeFiles/Lista4.dir/AGL3Window.cpp.s
 
-CMakeFiles/Lista4.dir/MyLine.cpp.o: CMakeFiles/Lista4.dir/flags.make
-CMakeFiles/Lista4.dir/MyLine.cpp.o: ../MyLine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lista4.dir/MyLine.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Lista4.dir/MyLine.cpp.o -c /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/MyLine.cpp
-
-CMakeFiles/Lista4.dir/MyLine.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lista4.dir/MyLine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/MyLine.cpp > CMakeFiles/Lista4.dir/MyLine.cpp.i
-
-CMakeFiles/Lista4.dir/MyLine.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/MyLine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/MyLine.cpp -o CMakeFiles/Lista4.dir/MyLine.cpp.s
-
-CMakeFiles/Lista4.dir/Linetab.cpp.o: CMakeFiles/Lista4.dir/flags.make
-CMakeFiles/Lista4.dir/Linetab.cpp.o: ../Linetab.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lista4.dir/Linetab.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Lista4.dir/Linetab.cpp.o -c /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Linetab.cpp
-
-CMakeFiles/Lista4.dir/Linetab.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lista4.dir/Linetab.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Linetab.cpp > CMakeFiles/Lista4.dir/Linetab.cpp.i
-
-CMakeFiles/Lista4.dir/Linetab.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/Linetab.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Linetab.cpp -o CMakeFiles/Lista4.dir/Linetab.cpp.s
-
 CMakeFiles/Lista4.dir/main.cpp.o: CMakeFiles/Lista4.dir/flags.make
 CMakeFiles/Lista4.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Lista4.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lista4.dir/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Lista4.dir/main.cpp.o -c /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp
 
 CMakeFiles/Lista4.dir/main.cpp.i: cmake_force
@@ -129,23 +103,34 @@ CMakeFiles/Lista4.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp -o CMakeFiles/Lista4.dir/main.cpp.s
 
+CMakeFiles/Lista4.dir/Sphere.cpp.o: CMakeFiles/Lista4.dir/flags.make
+CMakeFiles/Lista4.dir/Sphere.cpp.o: ../Sphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lista4.dir/Sphere.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Lista4.dir/Sphere.cpp.o -c /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp
+
+CMakeFiles/Lista4.dir/Sphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lista4.dir/Sphere.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp > CMakeFiles/Lista4.dir/Sphere.cpp.i
+
+CMakeFiles/Lista4.dir/Sphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/Sphere.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp -o CMakeFiles/Lista4.dir/Sphere.cpp.s
+
 # Object files for target Lista4
 Lista4_OBJECTS = \
 "CMakeFiles/Lista4.dir/AGL3Window.cpp.o" \
-"CMakeFiles/Lista4.dir/MyLine.cpp.o" \
-"CMakeFiles/Lista4.dir/Linetab.cpp.o" \
-"CMakeFiles/Lista4.dir/main.cpp.o"
+"CMakeFiles/Lista4.dir/main.cpp.o" \
+"CMakeFiles/Lista4.dir/Sphere.cpp.o"
 
 # External object files for target Lista4
 Lista4_EXTERNAL_OBJECTS =
 
 Lista4: CMakeFiles/Lista4.dir/AGL3Window.cpp.o
-Lista4: CMakeFiles/Lista4.dir/MyLine.cpp.o
-Lista4: CMakeFiles/Lista4.dir/Linetab.cpp.o
 Lista4: CMakeFiles/Lista4.dir/main.cpp.o
+Lista4: CMakeFiles/Lista4.dir/Sphere.cpp.o
 Lista4: CMakeFiles/Lista4.dir/build.make
 Lista4: CMakeFiles/Lista4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Lista4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Lista4"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Lista4.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

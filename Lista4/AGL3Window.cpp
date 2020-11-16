@@ -136,7 +136,7 @@ void AGLWindow::Init(int width, int height, const char *name, int fullscr, int v
    glfwSetMouseButtonCallback(window, AGLWindow::CallbackMouseButton );
    glfwSetScrollCallback(     window, AGLWindow::CallbackScroll );
    glfwSetCursorPosCallback(  window, AGLWindow::CallbackMousePos );
-   //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //mouse input
    glfwGetWindowPos(  window, &winPos[0],  &winPos[1] );
    // Resize() begining:
    wd=width;

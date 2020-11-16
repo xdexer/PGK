@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Lista4.dir/AGL3Window.cpp.o CMakeFiles/Lista4.dir/MyLine.cpp.o CMakeFiles/Lista4.dir/Linetab.cpp.o CMakeFiles/Lista4.dir/main.cpp.o  -o Lista4  -lepoxy -lGL -lglfw 
+/usr/bin/c++  -g   CMakeFiles/Lista4.dir/AGL3Window.cpp.o CMakeFiles/Lista4.dir/main.cpp.o CMakeFiles/Lista4.dir/Sphere.cpp.o  -o Lista4  -lepoxy -lGL -lglfw 

@@ -96,16 +96,10 @@
 		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Camera.h">
 			<Option target="Lista4"/>
 		</Unit>
-		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Linetab.cpp">
+		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp">
 			<Option target="Lista4"/>
 		</Unit>
-		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Linetab.h">
-			<Option target="Lista4"/>
-		</Unit>
-		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/MyLine.cpp">
-			<Option target="Lista4"/>
-		</Unit>
-		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/MyLine.h">
+		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.h">
 			<Option target="Lista4"/>
 		</Unit>
 		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp">

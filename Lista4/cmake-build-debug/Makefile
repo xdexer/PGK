@@ -170,59 +170,32 @@ AGL3Window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/AGL3Window.cpp.s
 .PHONY : AGL3Window.cpp.s
 
-Linetab.o: Linetab.cpp.o
+Sphere.o: Sphere.cpp.o
 
-.PHONY : Linetab.o
-
-# target to build an object file
-Linetab.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Linetab.cpp.o
-.PHONY : Linetab.cpp.o
-
-Linetab.i: Linetab.cpp.i
-
-.PHONY : Linetab.i
-
-# target to preprocess a source file
-Linetab.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Linetab.cpp.i
-.PHONY : Linetab.cpp.i
-
-Linetab.s: Linetab.cpp.s
-
-.PHONY : Linetab.s
-
-# target to generate assembly for a file
-Linetab.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Linetab.cpp.s
-.PHONY : Linetab.cpp.s
-
-MyLine.o: MyLine.cpp.o
-
-.PHONY : MyLine.o
+.PHONY : Sphere.o
 
 # target to build an object file
-MyLine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/MyLine.cpp.o
-.PHONY : MyLine.cpp.o
+Sphere.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Sphere.cpp.o
+.PHONY : Sphere.cpp.o
 
-MyLine.i: MyLine.cpp.i
+Sphere.i: Sphere.cpp.i
 
-.PHONY : MyLine.i
+.PHONY : Sphere.i
 
 # target to preprocess a source file
-MyLine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/MyLine.cpp.i
-.PHONY : MyLine.cpp.i
+Sphere.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Sphere.cpp.i
+.PHONY : Sphere.cpp.i
 
-MyLine.s: MyLine.cpp.s
+Sphere.s: Sphere.cpp.s
 
-.PHONY : MyLine.s
+.PHONY : Sphere.s
 
 # target to generate assembly for a file
-MyLine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/MyLine.cpp.s
-.PHONY : MyLine.cpp.s
+Sphere.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Sphere.cpp.s
+.PHONY : Sphere.cpp.s
 
 main.o: main.cpp.o
 
@@ -263,12 +236,9 @@ help:
 	@echo "... AGL3Window.o"
 	@echo "... AGL3Window.i"
 	@echo "... AGL3Window.s"
-	@echo "... Linetab.o"
-	@echo "... Linetab.i"
-	@echo "... Linetab.s"
-	@echo "... MyLine.o"
-	@echo "... MyLine.i"
-	@echo "... MyLine.s"
+	@echo "... Sphere.o"
+	@echo "... Sphere.i"
+	@echo "... Sphere.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

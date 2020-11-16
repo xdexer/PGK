@@ -4,19 +4,13 @@
 CMakeFiles/Lista4.dir/AGL3Window.cpp.o: ../AGL3Window.cpp
 CMakeFiles/Lista4.dir/AGL3Window.cpp.o: ../AGL3Window.hpp
 
-CMakeFiles/Lista4.dir/Linetab.cpp.o: ../AGL3Drawable.hpp
-CMakeFiles/Lista4.dir/Linetab.cpp.o: ../MyLine.h
-CMakeFiles/Lista4.dir/Linetab.cpp.o: ../Linetab.cpp
-CMakeFiles/Lista4.dir/Linetab.cpp.o: ../Linetab.h
-
-CMakeFiles/Lista4.dir/MyLine.cpp.o: ../AGL3Drawable.hpp
-CMakeFiles/Lista4.dir/MyLine.cpp.o: ../MyLine.cpp
-CMakeFiles/Lista4.dir/MyLine.cpp.o: ../MyLine.h
+CMakeFiles/Lista4.dir/Sphere.cpp.o: ../AGL3Drawable.hpp
+CMakeFiles/Lista4.dir/Sphere.cpp.o: ../Sphere.cpp
+CMakeFiles/Lista4.dir/Sphere.cpp.o: ../Sphere.h
 
 CMakeFiles/Lista4.dir/main.cpp.o: ../AGL3Drawable.hpp
 CMakeFiles/Lista4.dir/main.cpp.o: ../AGL3Window.hpp
 CMakeFiles/Lista4.dir/main.cpp.o: ../Camera.h
-CMakeFiles/Lista4.dir/main.cpp.o: ../Linetab.h
-CMakeFiles/Lista4.dir/main.cpp.o: ../MyLine.h
+CMakeFiles/Lista4.dir/main.cpp.o: ../Sphere.h
 CMakeFiles/Lista4.dir/main.cpp.o: ../main.cpp
 
