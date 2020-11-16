@@ -103,31 +103,31 @@ CMakeFiles/Lista4.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp -o CMakeFiles/Lista4.dir/main.cpp.s
 
-CMakeFiles/Lista4.dir/Sphere.cpp.o: CMakeFiles/Lista4.dir/flags.make
-CMakeFiles/Lista4.dir/Sphere.cpp.o: ../Sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lista4.dir/Sphere.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Lista4.dir/Sphere.cpp.o -c /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp
+CMakeFiles/Lista4.dir/Cube.cpp.o: CMakeFiles/Lista4.dir/flags.make
+CMakeFiles/Lista4.dir/Cube.cpp.o: ../Cube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lista4.dir/Cube.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Lista4.dir/Cube.cpp.o -c /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.cpp
 
-CMakeFiles/Lista4.dir/Sphere.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lista4.dir/Sphere.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp > CMakeFiles/Lista4.dir/Sphere.cpp.i
+CMakeFiles/Lista4.dir/Cube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lista4.dir/Cube.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.cpp > CMakeFiles/Lista4.dir/Cube.cpp.i
 
-CMakeFiles/Lista4.dir/Sphere.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/Sphere.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp -o CMakeFiles/Lista4.dir/Sphere.cpp.s
+CMakeFiles/Lista4.dir/Cube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lista4.dir/Cube.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.cpp -o CMakeFiles/Lista4.dir/Cube.cpp.s
 
 # Object files for target Lista4
 Lista4_OBJECTS = \
 "CMakeFiles/Lista4.dir/AGL3Window.cpp.o" \
 "CMakeFiles/Lista4.dir/main.cpp.o" \
-"CMakeFiles/Lista4.dir/Sphere.cpp.o"
+"CMakeFiles/Lista4.dir/Cube.cpp.o"
 
 # External object files for target Lista4
 Lista4_EXTERNAL_OBJECTS =
 
 Lista4: CMakeFiles/Lista4.dir/AGL3Window.cpp.o
 Lista4: CMakeFiles/Lista4.dir/main.cpp.o
-Lista4: CMakeFiles/Lista4.dir/Sphere.cpp.o
+Lista4: CMakeFiles/Lista4.dir/Cube.cpp.o
 Lista4: CMakeFiles/Lista4.dir/build.make
 Lista4: CMakeFiles/Lista4.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Lista4"

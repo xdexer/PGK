@@ -4,13 +4,13 @@
 CMakeFiles/Lista4.dir/AGL3Window.cpp.o
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.cpp
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.hpp
-CMakeFiles/Lista4.dir/Sphere.cpp.o
+CMakeFiles/Lista4.dir/Cube.cpp.o
  ../AGL3Drawable.hpp
- /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp
- /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.h
+ /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.cpp
+ /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.h
 CMakeFiles/Lista4.dir/main.cpp.o
  ../AGL3Drawable.hpp
  ../AGL3Window.hpp
  ../Camera.h
- ../Sphere.h
+ ../Cube.h
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp

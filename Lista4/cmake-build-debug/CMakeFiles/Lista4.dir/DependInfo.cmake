@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.cpp" "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles/Lista4.dir/AGL3Window.cpp.o"
-  "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Sphere.cpp" "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles/Lista4.dir/Sphere.cpp.o"
+  "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.cpp" "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles/Lista4.dir/Cube.cpp.o"
   "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp" "/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/cmake-build-debug/CMakeFiles/Lista4.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

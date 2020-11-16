@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Lista4.dir/AGL3Window.cpp.o"
-  "CMakeFiles/Lista4.dir/Sphere.cpp.o"
+  "CMakeFiles/Lista4.dir/Cube.cpp.o"
   "CMakeFiles/Lista4.dir/main.cpp.o"
   "Lista4"
   "Lista4.pdb"

@@ -4,13 +4,13 @@
 CMakeFiles/Lista4.dir/AGL3Window.cpp.o: ../AGL3Window.cpp
 CMakeFiles/Lista4.dir/AGL3Window.cpp.o: ../AGL3Window.hpp
 
-CMakeFiles/Lista4.dir/Sphere.cpp.o: ../AGL3Drawable.hpp
-CMakeFiles/Lista4.dir/Sphere.cpp.o: ../Sphere.cpp
-CMakeFiles/Lista4.dir/Sphere.cpp.o: ../Sphere.h
+CMakeFiles/Lista4.dir/Cube.cpp.o: ../AGL3Drawable.hpp
+CMakeFiles/Lista4.dir/Cube.cpp.o: ../Cube.cpp
+CMakeFiles/Lista4.dir/Cube.cpp.o: ../Cube.h
 
 CMakeFiles/Lista4.dir/main.cpp.o: ../AGL3Drawable.hpp
 CMakeFiles/Lista4.dir/main.cpp.o: ../AGL3Window.hpp
 CMakeFiles/Lista4.dir/main.cpp.o: ../Camera.h
-CMakeFiles/Lista4.dir/main.cpp.o: ../Sphere.h
+CMakeFiles/Lista4.dir/main.cpp.o: ../Cube.h
 CMakeFiles/Lista4.dir/main.cpp.o: ../main.cpp
 
