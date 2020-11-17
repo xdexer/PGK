@@ -197,6 +197,33 @@ Cube.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Cube.cpp.s
 .PHONY : Cube.cpp.s
 
+Obstacles.o: Obstacles.cpp.o
+
+.PHONY : Obstacles.o
+
+# target to build an object file
+Obstacles.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Obstacles.cpp.o
+.PHONY : Obstacles.cpp.o
+
+Obstacles.i: Obstacles.cpp.i
+
+.PHONY : Obstacles.i
+
+# target to preprocess a source file
+Obstacles.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Obstacles.cpp.i
+.PHONY : Obstacles.cpp.i
+
+Obstacles.s: Obstacles.cpp.s
+
+.PHONY : Obstacles.s
+
+# target to generate assembly for a file
+Obstacles.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Lista4.dir/build.make CMakeFiles/Lista4.dir/Obstacles.cpp.s
+.PHONY : Obstacles.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -239,6 +266,9 @@ help:
 	@echo "... Cube.o"
 	@echo "... Cube.i"
 	@echo "... Cube.s"
+	@echo "... Obstacles.o"
+	@echo "... Obstacles.i"
+	@echo "... Obstacles.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

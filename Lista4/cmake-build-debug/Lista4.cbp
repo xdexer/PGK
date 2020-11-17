@@ -102,6 +102,12 @@
 		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.h">
 			<Option target="Lista4"/>
 		</Unit>
+		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.cpp">
+			<Option target="Lista4"/>
+		</Unit>
+		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.h">
+			<Option target="Lista4"/>
+		</Unit>
 		<Unit filename="/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp">
 			<Option target="Lista4"/>
 		</Unit>

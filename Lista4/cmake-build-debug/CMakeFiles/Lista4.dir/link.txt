@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Lista4.dir/AGL3Window.cpp.o CMakeFiles/Lista4.dir/main.cpp.o CMakeFiles/Lista4.dir/Cube.cpp.o  -o Lista4  -lepoxy -lGL -lglfw 
+/usr/bin/c++  -g   CMakeFiles/Lista4.dir/AGL3Window.cpp.o CMakeFiles/Lista4.dir/main.cpp.o CMakeFiles/Lista4.dir/Cube.cpp.o CMakeFiles/Lista4.dir/Obstacles.cpp.o  -o Lista4  -lepoxy -lGL -lglfw 

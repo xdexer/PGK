@@ -6,25 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.cpp
-unistd.h
--
-stdexcept
--
-iostream
--
-vector
--
-AGL3Window.hpp
-/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.hpp
+/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.cpp
+Obstacles.h
+/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.h
 
-/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/AGL3Window.hpp
-epoxy/gl.h
--
-epoxy/glx.h
--
-GLFW/glfw3.h
--
-array
--
+/home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.h
 

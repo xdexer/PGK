@@ -8,6 +8,9 @@ CMakeFiles/Lista4.dir/Cube.cpp.o: ../AGL3Drawable.hpp
 CMakeFiles/Lista4.dir/Cube.cpp.o: ../Cube.cpp
 CMakeFiles/Lista4.dir/Cube.cpp.o: ../Cube.h
 
+CMakeFiles/Lista4.dir/Obstacles.cpp.o: ../Obstacles.cpp
+CMakeFiles/Lista4.dir/Obstacles.cpp.o: ../Obstacles.h
+
 CMakeFiles/Lista4.dir/main.cpp.o: ../AGL3Drawable.hpp
 CMakeFiles/Lista4.dir/main.cpp.o: ../AGL3Window.hpp
 CMakeFiles/Lista4.dir/main.cpp.o: ../Camera.h
