@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 
 class Obstacles: public AGLDrawable {
+public:
     Obstacles(int n = 10, int s = 2137) : AGLDrawable(0){
         num = n;
         seed = s;
@@ -24,6 +25,7 @@ private:
     //std::vector<int> middlePoints;
     std::vector<float> angles;
     int num, seed;
+    unsigned int VAO, VBO;
 };
 
 

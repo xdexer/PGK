@@ -6,7 +6,8 @@
 #include <array>
 #include <AGL3Window.hpp>
 #include <Camera.h>
-#include <Cube.h>
+//#include <Cube.h>
+#include <Obstacles.h>
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 2.0f));
@@ -76,8 +77,8 @@ void MyWindow::ScrollCB(double xp, double yp) {
 
 void MyWindow::MainLoop(int seed, int n) {
     ViewportOne(0,0,wd,ht);
-    Cube board;
-
+    //Cube board;
+    Obstacles x;
     do {
         glClear( GL_COLOR_BUFFER_BIT );
         float currentFrame = glfwGetTime();
@@ -97,7 +98,8 @@ void MyWindow::MainLoop(int seed, int n) {
         camera.setUniformMat4(4, view);
         AGLErrors("main-loopbegin");
         // =====================================================        Drawing
-        board.draw();
+        //board.draw();
+        x.draw();
         AGLErrors("main-afterdraw");
 
         // input/output events

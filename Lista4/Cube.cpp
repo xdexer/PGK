@@ -11,10 +11,7 @@
 
 void Cube::setBuffers() {
     bindBuffers();
-    //glGenVertexArrays(1, &VAO);
-    //glGenBuffers(1,&VBO);
 
-    //glBindVertexArray(VAO);
     float vertices[] = {
             -1.0f, -1.0f, -1.0f,
             1.0f, -1.0f, -1.0f,

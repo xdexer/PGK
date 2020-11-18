@@ -6,9 +6,31 @@
 
 #IncludeRegexTransform: 
 
+../AGL3Drawable.hpp
+vector
+-
+iostream
+-
+fstream
+-
+epoxy/gl.h
+-
+epoxy/glx.h
+-
+GLFW/glfw3.h
+-
+
 /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.cpp
 Obstacles.h
 /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.h
+glm/glm.hpp
+-
 
 /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.h
+AGL3Drawable.hpp
+-
+vector
+-
+glm/glm.hpp
+-
 

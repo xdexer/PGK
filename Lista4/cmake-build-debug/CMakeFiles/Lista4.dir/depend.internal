@@ -9,11 +9,12 @@ CMakeFiles/Lista4.dir/Cube.cpp.o
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.cpp
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Cube.h
 CMakeFiles/Lista4.dir/Obstacles.cpp.o
+ ../AGL3Drawable.hpp
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.cpp
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/Obstacles.h
 CMakeFiles/Lista4.dir/main.cpp.o
  ../AGL3Drawable.hpp
  ../AGL3Window.hpp
  ../Camera.h
- ../Cube.h
+ ../Obstacles.h
  /home/dominik/Desktop/ISSP/2020-2021/PGK/Lista4/main.cpp
